@@ -127,3 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# data files
+D_W_15K*
+EN_DE_15K*
+EN_FR_15K*
+MED_BBK_9K
+
+!D_W_15K_V1.zip
+!D_W_15K_V2.zip
+!EN_DE_15K_V1.zip
+!EN_DE_15K_V2.zip
+!EN_FR_15K_V1.zip
+!EN_FR_15K_V2.zip
+!MED_BBK_9K.zip
