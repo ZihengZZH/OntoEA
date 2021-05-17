@@ -6,7 +6,7 @@ import warnings
 from openea.modules.args.args_hander import load_args
 from openea.modules.load.kgs import read_kgs_from_folder
 from openea.models.basic_model import BasicModel
-from openea.approaches.OntoEA import OntoEA
+from openea.approaches.ontoea import OntoEA
 
 
 warnings.filterwarnings('ignore')
