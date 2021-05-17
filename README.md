@@ -55,9 +55,9 @@ Different settings of OntoEA can be configured in the [ontoea_args_15K.json](cod
 
 ```
 {
-    "training_data": "../../benchmarks/",       // where the benchmark is
-    "output": "../../output/results/",          // where the output results go
-    "dataset_division": "721_5fold/1/",         // where the train/valid/test splits are
+	"training_data": "../../benchmarks/",       // where the benchmark is
+	"output": "../../output/results/",          // where the output results go
+	"dataset_division": "721_5fold/1/",         // where the train/valid/test splits are
 	"word_embed": "../../benchmarks/wiki-news-300d-1M.vec",     // where the word embeddings are
 	"use_word_embed_init": 0,                   // whether or not to use word embeddings in OntoEA (i.e., 1 == OntoEA w/ SI; 0 == OntoEA w/o SI)
 	"use_word_embed_init_onto": 0,              // whether or not to use word embeddings in OntoEA (i.e., 1 == OntoEA w/ SI; 0 == OntoEA w/o SI)
