@@ -53,7 +53,7 @@ There are two ways to run OntoEA:
 
 Different settings of OntoEA can be configured in the [ontoea_args_15K.json](code/run/args/ontoea_args_15K.json) and [ontoea_args_100K.json](code/run/args/ontoea_args_100K.json). The key configuration terms are listed as follows.
 
-```json
+```
 {
     "training_data": "../../benchmarks/",       // where the benchmark is
     "output": "../../output/results/",          // where the output results go
