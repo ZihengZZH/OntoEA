@@ -3,7 +3,7 @@ import sys
 import time
 import warnings
 
-from openea.modules.args.args_handler import load_args
+from openea.modules.args.args_hander import load_args
 from openea.modules.load.kgs import read_kgs_from_folder
 from openea.models.basic_model import BasicModel
 from openea.approaches.OntoEA import OntoEA
@@ -36,13 +36,12 @@ if __name__ == '__main__':
     if args.embedding_module == "RSN4EA":
         remove_unlinked = True
 
-    if args.onto_vaild:
+    if args.onto_valid:
         kgs = read_kgs_from_folder(args.training_data, args.dataset_division,
                                    args.alignment_module, args.ordered, args.lang,
                                    remove_unlinked=remove_unlinked,
-                                   onto_vaild=args.onto_vaild,
-                                   seed_ent_type=args.seed_ent_type,
                                    onto_mode=args.cvlink_module,
+                                   seed_ent_type=args.seed_ent_type,
                                    check_version=args.check_version,
                                    data_version=args.data_version)
     else:

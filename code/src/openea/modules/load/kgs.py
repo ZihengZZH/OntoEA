@@ -340,11 +340,11 @@ class ShareOntoKGs(KGs):
 
 
 def read_kgs_from_folder(training_data_folder, division, mode, ordered, lang=None, remove_unlinked=False,
-                         onto_vaild=True, onto_mode=None, seed_ent_type='normal',
+                         onto_valid=True, onto_mode=None, seed_ent_type='normal',
                          unsure_w=0, check_version=0, data_version='raw', dataset_division='',
                          k=0, delay_weight=0, seed_ratio=0.):
     '''
-    training_data_folder : 数据集目录，例如datasets/B_W_15K_V1
+    training_data_folder : 数据集目录，例如datasets/D_W_15K_V1
     division : fold的目录
     mode : 对齐方式, sharing, mapping, swapping ......
     ordered : uri编号的方式，True是按照频率编号
@@ -353,7 +353,7 @@ def read_kgs_from_folder(training_data_folder, division, mode, ordered, lang=Non
     if 'raw' in training_data_folder.lower():
         # ontology-enhanced KG loader
         return read_kgs_from_dbp_raw(training_data_folder, lang, division, mode, ordered,
-                                     remove_unlinked=remove_unlinked, onto_vaild=onto_vaild, seed_ent_type=seed_ent_type,
+                                     remove_unlinked=remove_unlinked, onto_valid=onto_valid, seed_ent_type=seed_ent_type,
                                      onto_mode=onto_mode, unsure_w=unsure_w, check_version=check_version,
                                      dataset_division=dataset_division, data_version=data_version,
                                      k=k, delay_weight=delay_weight, seed_ratio=seed_ratio)
@@ -376,7 +376,7 @@ def read_kgs_from_folder(training_data_folder, division, mode, ordered, lang=Non
     kg1 = KG(kg1_relation_triples, kg1_attribute_triples)
     kg2 = KG(kg2_relation_triples, kg2_attribute_triples)
 
-    if onto_vaild:
+    if onto_valid:
         # 本体文件存放在dbp15K_raw_data路径下
         onto_kg_relation_triples, _, _ = read_relation_triples(
             os.path.join(training_data_folder, 'onto_subClassOf_triples'), bracket=True)
@@ -410,7 +410,7 @@ def read_kgs_from_folder(training_data_folder, division, mode, ordered, lang=Non
 
 
 def read_kgs_from_dbp_raw(training_data_folder, lang, division, mode, ordered,
-                          remove_unlinked=False, onto_vaild=True, seed_ent_type='normal',
+                          remove_unlinked=False, onto_valid=True, seed_ent_type='normal',
                           onto_mode=None, unsure_w=0, check_version=0, data_version='raw',
                           dataset_division='', k=0, seed_ratio=0.3, shuffle_seed=False, delay_weight=1.0):
     '''
@@ -476,7 +476,7 @@ def read_kgs_from_dbp_raw(training_data_folder, lang, division, mode, ordered,
     kg1 = KG(kg1_relation_triples, kg1_attribute_triples)
     kg2 = KG(kg2_relation_triples, kg2_attribute_triples)
 
-    if onto_vaild:
+    if onto_valid:
         # 本体文件存放在dbp15K_raw_data路径下
         onto_kg_relation_triples, _, _ = read_relation_triples(
             os.path.join(training_data_folder, 'onto_subClassOf_triples'), bracket=True)

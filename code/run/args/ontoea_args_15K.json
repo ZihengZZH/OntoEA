@@ -1,11 +1,11 @@
 {
-	"training_data": "../../datasets/",
+	"training_data": "../../benchmarks/",
     "output": "../../output/results/",
     "dataset_division": "721_5fold/1/",
-	"word_embed": "../../datasets/wiki-news-300d-1M.vec",
-	"use_word_embed_init": 1,
-	"use_word_embed_init_onto": 1,
-	"word_embed_init_zh": 1,
+	"word_embed": "../../benchmarks/wiki-news-300d-1M.vec",
+	"use_word_embed_init": 0,
+	"use_word_embed_init_onto": 0,
+	"word_embed_init_zh": 0,
 	"use_alter_label": 0,
 
 	"lang": "zh_en",
@@ -15,7 +15,7 @@
 	"fusion_way" : "add",
 	"cvlink_type_sample" : false,
 
-	"onto_vaild": true,
+	"onto_valid": true,
 	"cvlink_module": null,
 	"onto_training_method": "hier",
 	"check_version": 4,

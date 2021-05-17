@@ -136,8 +136,8 @@ class BasicModel:
     def _define_onto_mapping_variables(self, method='linear'):
         add_onto_mapping_variables(self, method=method)
 
-    def _define_mapping_graph(self, onto_vaild=False):
-        if onto_vaild:
+    def _define_mapping_graph(self, onto_valid=False):
+        if onto_valid:
             add_mapping_module_with_ontoAlign(self)
         else:
             add_mapping_module(self)
