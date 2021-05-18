@@ -1,0 +1,8 @@
+numpy
+pandas
+scikit-learn
+gensim
+python-Levenshtein
+scipy
+matplotlib
+tensorflow==1.14.0

@@ -2,7 +2,7 @@
 
 ## Code
 
-The source code of OntoEA is implemented based on [OpenEA](https://github.com/nju-websoft/OpenEA) and we follow the same design features of OpenEA to achieve functionality while maintaining extensibility. We retain the minimal fraction of OpenEA in the implmentation of OntoEA, and we list the source code (along with comments) of as follows.
+The source code of OntoEA is implemented based on [OpenEA](https://github.com/nju-websoft/OpenEA) and we follow the same design features of OpenEA to achieve functionality while maintaining extensibility. We retain the minimal fraction of OpenEA in the implementation of OntoEA, and we list the source code (along with comments) of as follows.
 
 ```
 code
@@ -43,34 +43,79 @@ code
 |   |   |   |   |__ util.py         // same as OpenEA
 ```
 
-### how to run OntoEA
+### How to run OntoEA
 
-There are two ways to run OntoEA:
-1. cd to ```./code/run``` and run the bash script ```./run_OntoEA.sh``` (recommended)
-2. cd to ```./code/run``` and run OntoEA as ```python main_from_args.py ./args/ontoea_args_15K.json <benchmark_name> 721_5fold/1/```
+Since we adopt the OpenEA codebase to implement OntoEA, the way to run OntoEA is much similar to [the way to use OpenEA](https://github.com/nju-websoft/OpenEA#usage). We provide two ways to run OntoEA:
 
-### configuration of OntoEA
+**1. using bash scripts (recommended)**
 
-Different settings of OntoEA can be configured in the [ontoea_args_15K.json](code/run/args/ontoea_args_15K.json) and [ontoea_args_100K.json](code/run/args/ontoea_args_100K.json). The key configuration terms are listed as follows.
+Change into ```./code/run``` and run the bash script
+```
+./run_OntoEA.sh
+```
+
+**2. using off-the-shelf approaches with python interface**
+
+Change into ```./code/run``` and run OntoEA as
+```
+python main_from_args.py <predefined_arguments> <benchmark_name> <dataset_splits>
+```
+and for example
+```
+python main_from_args.py ./args/ontoea_args_15K.json MED_BBK_9K 721_5fold/1/
+```
+
+### Configuration of OntoEA
+
+Different settings of OntoEA can be configured in the [ontoea_args_15K.json](code/run/args/ontoea_args_15K.json) and [ontoea_args_100K.json](code/run/args/ontoea_args_100K.json). The key configurations are listed as follows.
 
 ```
 {
-	"training_data": "../../benchmarks/",       // where the benchmark is
-	"output": "../../output/results/",          // where the output results go
-	"dataset_division": "721_5fold/1/",         // where the train/valid/test splits are
-	"word_embed": "../../benchmarks/wiki-news-300d-1M.vec",     // where the word embeddings are
-	"use_word_embed_init": 0,                   // whether or not to use word embeddings in OntoEA (i.e., 1 == OntoEA w/ SI; 0 == OntoEA w/o SI)
-	"use_word_embed_init_onto": 0,              // whether or not to use word embeddings in OntoEA (i.e., 1 == OntoEA w/ SI; 0 == OntoEA w/o SI)
-	"word_embed_init_zh": 0,                    // whether or not Chinese word embeddings (only for MED_BBK_9K)
-	"use_alter_label": 0,                       // whether or not to use alternative labels for entity names (only for D_W benchmarks)
+  "training_data": "../../benchmarks/",       // where the benchmark is
+  "output": "../../output/results/",          // where the output results go
+  "dataset_division": "721_5fold/1/",         // where the train/valid/test splits are
+  "word_embed": "../../benchmarks/wiki-news-300d-1M.vec",     // where the word embeddings are
+  "use_word_embed_init": 0,                   // whether or not to use word embeddings in OntoEA (i.e., 1 == OntoEA w/ SI; 0 == OntoEA w/o SI)
+  "use_word_embed_init_onto": 0,              // whether or not to use word embeddings in OntoEA (i.e., 1 == OntoEA w/ SI; 0 == OntoEA w/o SI)
+  "word_embed_init_zh": 0,                    // whether or not Chinese word embeddings (only for MED_BBK_9K)
+  "use_alter_label": 0,                       // whether or not to use alternative labels for entity names (only for D_W benchmarks)
 }
 ```
+
+Some other configurations on the hyperparameters (lambda_1, lambda_2, lambda_3) that balance different losses are listed as follows.
+
+```
+{
+  "alpha": 5,		// controlling L_E (entity embedding)
+  "gamma": 1,		// controlling L_M (membership loss)
+  "sigma": 1,		// controlling L_C (ontology embedding)
+}
+```
+
+Therefore, the experiments of **Model Component Analysis** in Sec. 4.3 of our paper can be re-produced using these settings:
+```
+w/o L_C   ==> to set sigma = 0
+w/o L_M   ==> to set gamma = 0
+w/o Onto. ==> to set sigma = 0 and gamma = 0
+```
+
+### Dependencies of OntoEA
+
+* Python 3.x (tested on Python 3.6.12)
+* Tensorflow 1.x (tested on Tensorflow 1.14.0)
+* Scipy
+* Numpy
+* Pandas
+* Scikit-learn
+* Gensim
+
+All the dependencies can be installed using the provided [requirements](requirements.txt).
 
 ## Benchmarks
 
 The newly constructed benchmarks extends the original KG alignment benchmarks ([OpenEA](https://github.com/nju-websoft/OpenEA) and [MED_BBK_9K](https://github.com/ZihengZZH/industry-eval-EA)) with ontological information, including ontology triples (both disjointWith and subClassOf), membership links (or cross-view links), ontology hierarchy.
 
-The data files are identical for each benchmark. All the benchmarks along with the MED_BBK_9K details are listed as follows.
+The data files are identical for each benchmark, and we list all the benchmarks with MED_BBK_9K benchmark details as follows.
 
 ```
 benchmarks
@@ -96,6 +141,9 @@ benchmarks
 |   |__ onto_subClassOf_triples     // subClassOf relation triples of the aligned/shared ontology
 |   |__ class_path.json     // class hierarchy of the aligned/shared ontology
 ```
+
+Note that D_W_15K_V1/V2_A are constructed with the ontologies pre-aligned with alignment system [PARIS](https://arxiv.org/abs/1111.7164) and D_W_15K_V1/V2_M are constructed with the ontologies pre-aligned with manual annotation. These two different settings correspond to the **Analysis of Ontology Alignment Methods** in Sec. 4.3 of our paper.
+
 
 ## Citation
 
