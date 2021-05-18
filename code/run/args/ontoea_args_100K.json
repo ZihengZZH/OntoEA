@@ -1,6 +1,6 @@
 {
 	"training_data": "../../benchmarks/",
-    "output": "../../output/results/",
+	"output": "../../output/results/",
 	"dataset_division": "train_test/",
 	"word_embed": "../../benchmarks/wiki-news-300d-1M.vec",
 	"use_word_embed_init": 0,
@@ -11,9 +11,9 @@
 	"lang": "zh_en",
 	"data_version": "popular",
 
-	"ent_emb_loss" : "limit_loss",
-	"fusion_way" : "add",
-	"cvlink_type_sample" : false,
+	"ent_emb_loss": "limit_loss",
+	"fusion_way": "add",
+	"cvlink_type_sample": false,
 
 	"onto_valid": true,
 	"cvlink_module": null,
@@ -22,8 +22,8 @@
 	"seed_ent_type": "normal",
 
 	"pos_margin": 0.01,
-    "neg_margin": 2.0,
-    "neg_margin_balance": 0.2,
+	"neg_margin": 2.0,
+	"neg_margin_balance": 0.2,
 
 	"neg_sampling": "truncated",
 	"neg_triple_num": 10,
@@ -39,13 +39,13 @@
 	"onto_likelihood_epochs": 5,
 	"likelihood_slice": 10,
 
-    "embedding_module": "OntoEA",
-    "alignment_module": "mapping",
+	"embedding_module": "OntoEA",
+	"alignment_module": "mapping",
 	"search_module": "greedy",
 
-    "dim": 300,
-	"onto_dim":300,
-    "init": "unit",
+	"dim": 300,
+	"onto_dim": 300,
+	"init": "unit",
 	"ent_l2_norm": true,
 	"rel_l2_norm": true,
 	"loss_norm": "L2",
@@ -53,7 +53,7 @@
 	"learning_rate": 0.01,
 	"cv_link_lr": 0.001,
 	"likelihood_lr": 0.001,
-    "optimizer": "Adagrad",
+	"optimizer": "Adagrad",
 	"max_epoch": 2000,
 	"batch_size": 4500,
 	"onto_batch_size": 64,
@@ -61,7 +61,7 @@
 
 	"alpha": 5,
 	"gamma": 1,
-	"beta" : 0,
+	"beta": 0,
 	"sigma": 1,
 
 	"batch_threads_num": 4,
