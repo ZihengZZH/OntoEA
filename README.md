@@ -1,5 +1,7 @@
 # OntoEA: Ontology-guided Entity Alignment via Joint Knowledge Graph Embedding
 
+This repository holds the source code for our paper: OntoEA: Ontology-guided Entity Alignment via Joint Knowledge Graph Embedding [[arxiv](https://arxiv.org/pdf/2105.07688.pdf)][[acl](https://aclanthology.org/2021.findings-acl.96.pdf)] at Findings of ACL 2021.
+
 ## Code
 
 The source code of OntoEA is implemented based on [OpenEA](https://github.com/nju-websoft/OpenEA) and we follow the same design features of OpenEA to achieve functionality while maintaining extensibility. We retain the minimal fraction of OpenEA in the implementation of OntoEA, and we list the source code (along with comments) of as follows.
@@ -152,4 +154,21 @@ If you have any difficulty or question in running code and reproducing experimen
 If you use this model or code, please cite it as follows:
 
 ```
+@inproceedings{xiang-etal-2021-ontoea,
+    title = "{O}nto{EA}: Ontology-guided Entity Alignment via Joint Knowledge Graph Embedding",
+    author = "Xiang, Yuejia  and
+      Zhang, Ziheng  and
+      Chen, Jiaoyan  and
+      Chen, Xi  and
+      Lin, Zhenxi  and
+      Zheng, Yefeng",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021",
+    month = aug,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.findings-acl.96",
+    doi = "10.18653/v1/2021.findings-acl.96",
+    pages = "1117--1128",
+}
 ```
