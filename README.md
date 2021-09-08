@@ -1,6 +1,6 @@
 # OntoEA: Ontology-guided Entity Alignment via Joint Knowledge Graph Embedding
 
-This repository holds the source code for our paper: OntoEA: Ontology-guided Entity Alignment via Joint Knowledge Graph Embedding [[arxiv](https://arxiv.org/pdf/2105.07688.pdf)][[acl](https://aclanthology.org/2021.findings-acl.96.pdf)] at Findings of ACL 2021.
+This repository holds the source code for our paper: ***OntoEA: Ontology-guided Entity Alignment via Joint Knowledge Graph Embedding*** [[arxiv](https://arxiv.org/pdf/2105.07688.pdf)][[acl](https://aclanthology.org/2021.findings-acl.96.pdf)] at Findings of ACL 2021.
 
 ## Code
 
